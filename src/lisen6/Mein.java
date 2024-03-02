@@ -39,14 +39,14 @@ public class Mein {
 
     private static void printStringMod3(Map<Integer, String> map) {
 
-        map.entrySet().stream().filter(e -> e.getKey() % 3 == 0).forEach(e -> System.out.print(ANSI_RED+"\n HashMap Key -->"+ "0" +"\n HashMap string -->"+e.getValue() + ANSI_PURPLE +","));
+        map.entrySet().stream().filter(e -> e.getKey() % 3 == 0).forEach(e -> System.out.print(ANSI_RED+"\n % 3 == 0  "+" Ключ -->"+ "0" +"\n Выводит рандомное String значение -->"+e.getValue() + ANSI_PURPLE +","));
 
     }
 
     private static String getKeyMoreFive(Map<Integer, String> map) {
 
 
-        map.entrySet().stream().filter(e -> e.getKey() > 5).forEach(e -> System.out.print(ANSI_GREEN+"\n > 5  "+"HashMap Key -->"+ e.getKey() +"\n HashMap string -->"+e.getValue() + " " ));
+        map.entrySet().stream().filter(e -> e.getKey() > 5).forEach(e -> System.out.print(ANSI_GREEN+"\n Параметр > 5  "+" Ключ -->"+ e.getKey() +"\n Выводит рандомное String значение -->"+e.getValue() + " " ));
 
 
         return null;

@@ -17,7 +17,7 @@ public class Mein {
 
 
 
-        for (int i = 0; i <= 2; i++) {
+
 
             System.out.println("В видите число");
             Scanner scanner4 = new Scanner(System.in);
@@ -32,7 +32,7 @@ public class Mein {
             r2 = new Node(newGuess[1], null);
             r3 = new Node(newGuess[2], null);
             r4 = new Node(newGuess[3], null);
-        }
+
 
         Node node = r1;
         Node node1 =r2;
@@ -43,6 +43,7 @@ public class Mein {
         node2.next = node3;
 
         Node ref = node;
+
         while (ref != null) {
             System.out.print(ANSI_GREEN + ref.value + " ");
             ref = ref.next;

@@ -17,7 +17,7 @@ public class Mein {
         System.out.println(ANSI_RED+"В ведите целое число");
 
         int num = in.nextInt();
-        System.out.print(ANSI_GREEN+"Перевод в : ");
+        System.out.print(ANSI_GREEN+"Перевод в двоичную систему: ");
         decToBin(num);
     }
 
