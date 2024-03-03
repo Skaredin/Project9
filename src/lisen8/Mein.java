@@ -1,5 +1,7 @@
 package lisen8;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Mein {
@@ -7,7 +9,8 @@ public class Mein {
     public static final String ANSI_RED = "\u001b[31;1m";
     public static final String ANSI_PURPLE = "\u001B[35m";
 
-    static String TXT = "";
+    public String TXT ;
+
     public static void main(String[] args) {
 
 
@@ -22,41 +25,44 @@ public class Mein {
         Scanner scanner2 = new Scanner(System.in);
         String k2 = scanner2.nextLine();
 
+
+        System.out.println(ANSI_PURPLE+"\nа) с использованием цикла:");
         k0 =AddFirst1(k1, k0);
-       System.out.println(ANSI_GREEN+k0);
+        System.out.println(ANSI_GREEN+"•\tдобавление элемента в начало списка AddFirst(): "+ANSI_RED+k0+ANSI_GREEN+" Строка добавлена эта ("+ANSI_RED+k1+ANSI_GREEN+")");
         k0 =AddLast1(k2, k0);
-        System.out.println(ANSI_GREEN+k0);
+        System.out.println(ANSI_GREEN+"•\tдобавление элемента в конец списка AddLast(): "+ANSI_RED+k0+ANSI_GREEN+" Строка добавлена эта ("+ANSI_RED+k2+ANSI_GREEN+")");
         k0 =RemoveFirst(k0);
-        System.out.println("•\tудаление элемента с головы списка RemoveFirst():  "+ANSI_RED+k0);
+        System.out.println(ANSI_GREEN+"•\tудаление элемента с головы списка RemoveFirst(): "+ANSI_RED+k0+ANSI_GREEN+" Строка удалена эта ("+ANSI_RED+k1+ANSI_GREEN+")");
         k0 =RemoveLast(k0);
-        System.out.println("•\tудаление последнего элемента списка RemoveLast():  "+ANSI_RED+k0);
+        System.out.println(ANSI_GREEN+"•\tудаление последнего элемента списка RemoveLast(): "+ANSI_RED+k0+ANSI_GREEN+" Строка удалена эта ("+ANSI_RED+k2+ANSI_GREEN+")");
+        System.out.println(ANSI_PURPLE+"\nб) с использованием рекурсии:");
+
+        toStringRec();
 
 
 
-
-        System.out.println("\n •\tввод с головы createHeadRec()");
-        Scanner scanner3 = new Scanner(System.in);
-        String k3 = scanner3.nextLine();
-        System.out.println("\n •\tввод с хвоста createTailRec();");
-        Scanner scanner4 = new Scanner(System.in);
-        String k4 = scanner4.nextLine();
-
-        AddFirst2(k3);
-        AddLast2(k4);
 
     }
 
 
     static int save1 = 0;
     static int save2 = 0;
+
+    static String save1String ;
+    static String save2String ;
+    static String save3String ;
+    static List< String> list = new ArrayList<>();
+
+
     private static String AddFirst1(String decoder, String decoder2) {
 
+        save1String = decoder2;
+        save2String=decoder;
         String se = "";
         StringBuilder sb = new StringBuilder(decoder);
-        int count = decoder2.length();
-        System.out.println(count);
+        int count = decoder.length();
         for(int i=0;i<1;i++){
-            sb.insert(count+1, decoder2);
+            sb.insert(count, decoder2);
         }
         se = String.valueOf(sb);
         save1 = count;
@@ -64,14 +70,16 @@ public class Mein {
     }
 
     private static String AddLast1(String decoder, String decoder2) {
-
+        save3String=decoder;
         save2 = decoder.length();
         String dd = decoder2+decoder;
         return dd;
     }
     private static String RemoveFirst(String decoder) {
 
-        return decoder.substring(save1+1, decoder.length()-1);
+
+
+        return decoder.substring(save1, decoder.length());
 
     }
 
@@ -80,15 +88,19 @@ public class Mein {
 
         return  decoder.substring(0, decoder.length() - save2);
     }
+    private static void toStringRec() {
+        System.out.println(ANSI_GREEN+"•\tдобавление элемента в начало списка AddFirst(): "+ANSI_RED+AddFirst2()+ANSI_GREEN+" Строка добавлена эта ("+ANSI_RED+save2String+ANSI_GREEN+")");
 
-
-
-    private static String AddFirst2(String decoder) {
-
-        return decoder;
+        System.out.println(ANSI_GREEN+"•\tдобавление элемента в конец списка AddLast(): "+ANSI_RED+AddLast2()+ANSI_GREEN+" Строка добавлена эта ("+ANSI_RED+save3String+ANSI_GREEN+")");
     }
-    private static String AddLast2(String decoder) {
+    private static String AddFirst2() {
 
-        return decoder;
+        list.add(0,save1String);
+        list.add(1,save2String);
+        list.add(2,save3String);
+        return list.get(1)+list.get(0);
+    }
+    private static String AddLast2() {
+        return list.get(1)+list.get(0)+list.get(2);
     }
 }
